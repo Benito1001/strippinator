@@ -26,7 +26,7 @@ def stripImg(img, filename, keep_name=False, center=True, center_frac=None):
 
 	getSides = ctypes.CDLL('./getSides.so')
 	topy, bottomy, leftx, rightx = (ctypes.c_int(0) for i in range(4))
-	getSides.getSides(ctypes.byref(topy), ctypes.byref(bottomy), ctypes.byref(leftx), ctypes.byref(rightx))
+	getSides.getSides(ctypes.c_char_p(bytes(filename, 'utf-8')), ctypes.byref(topy), ctypes.byref(bottomy), ctypes.byref(leftx), ctypes.byref(rightx))
 	topy, bottomy, leftx, rightx = topy.value, bottomy.value, leftx.value, rightx.value
 
 	if center_frac is not None:

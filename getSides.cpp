@@ -66,9 +66,9 @@ int getRight(int w, int h, ImgData &imgData) {
 	}
 }
 
-extern "C" void getSides(int *topy, int *bottomy, int *leftx, int *rightx) {
+extern "C" void getSides(char* filename, int *topy, int *bottomy, int *leftx, int *rightx) {
 	GError *error = nullptr;
-	GdkPixbuf *pix = gdk_pixbuf_new_from_file("oppg2d2.png", &error);
+	GdkPixbuf *pix = gdk_pixbuf_new_from_file(filename, &error);
 
 	int w = gdk_pixbuf_get_width(pix);
 	int h = gdk_pixbuf_get_height(pix);
@@ -82,17 +82,4 @@ extern "C" void getSides(int *topy, int *bottomy, int *leftx, int *rightx) {
 	*bottomy = getBottom(w, h, imgData) + 1;
 	*leftx = getLeft(w, h, imgData);
 	*rightx = getRight(w, h, imgData) + 1;
-}
-
-int main(int argc, char const *argv[]) {
-	int topy = 0;
-	int bottomy = 0;
-	int leftx = 0;
-	int rightx = 0;
-
-	getSides(&topy, &bottomy, &leftx, &rightx);
-
-	cout << topy << " " << bottomy << " " << leftx << " " << rightx;
-
-	return 0;
 }
