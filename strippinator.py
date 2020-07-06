@@ -79,26 +79,3 @@ else:
 	for file in args:
 		img = image.open(file)
 		stripImg(img, file, keep_name, center, center_frac)
-
-
-# ran as: python3 strippinator.py oppg2d2.png --center-frac=0.924
-
-# start:
-#   get sides: 1.277
-#   fix overfill: 2.239
-#   save img: 1.759
-#   sum: 5.275
-
-# get sides with c++:
-#   get sides: 0.572
-#   fix overfill: 2.166
-#   save img: 1.708
-#   sum: 4.446
-
-# dont fix overfill like a dumbo:
-#   get sides: 0.564
-#   fix overfill: 0.665
-#   save img: 1.746
-#   sum: 2.975
-
-# time saved: 2.3 s, nice
